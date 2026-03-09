@@ -1,7 +1,177 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>About</h1>
-<br>
-<p>This website is designed to display example data tables using Pandas and Flask operations. Users can perform basic CRUD operations to add, manipulate, and sort records. A calculation of average points per player will also be available.</p>
+<div class="animate-fade-in-up">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h1>Our Story</h1>
+        <p class="script-accent" style="font-size: 1.8rem;">A Heritage of Elegance</p>
+        <div class="flowing-divider"></div>
+    </div>
+
+    <!-- Two Column Asymmetric Layout -->
+    <div class="row g-5">
+        <!-- Main Content Column -->
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-teal mb-4">Welcome to Serene Family Boutique</h3>
+
+                    <p>
+                        Founded with a passion for timeless elegance and family values, Serene Family Boutique
+                        brings together carefully curated collections that celebrate the art of refined living.
+                        Our boutique is more than a shop; it's a destination where quality meets character.
+                    </p>
+
+                    <p>
+                        Each piece in our collection is selected with intention, reflecting our commitment to
+                        craftsmanship and enduring style. From seasonal essentials to signature pieces,
+                        we believe in offering items that become cherished parts of your family's story.
+                    </p>
+
+                    <!-- Ornate Blockquote -->
+                    <blockquote class="blockquote-ornate my-4">
+                        <p class="mb-0">
+                            True elegance is not about being noticed, but about being remembered.
+                        </p>
+                        <footer class="mt-2 text-warm" style="font-size: 0.9rem;">
+                            - The Serene Philosophy
+                        </footer>
+                    </blockquote>
+
+                    <h4 class="text-teal mt-4 mb-3">Our Database System</h4>
+
+                    <p>
+                        This boutique features a complete inventory management system built with Flask and modern
+                        database technologies. Users can perform full CRUD operations to manage products,
+                        organize collections, and track customer orders seamlessly.
+                    </p>
+
+                    <div class="s-curve-divider" style="margin: 2rem 0;"></div>
+
+                    <div class="row text-center stagger-children">
+                        <div class="col-md-4 mb-3">
+                            <div class="p-3">
+                                <svg viewBox="0 0 50 50" width="40" height="40" class="mb-2">
+                                    <circle cx="25" cy="25" r="20" fill="none" stroke="#8A9A5B" stroke-width="2"/>
+                                    <path d="M15 25 L22 32 L35 18" fill="none" stroke="#C5A572" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <h6 class="text-teal">Products</h6>
+                                <small class="text-warm">Full inventory tracking</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="p-3">
+                                <svg viewBox="0 0 50 50" width="40" height="40" class="mb-2">
+                                    <circle cx="25" cy="25" r="20" fill="none" stroke="#C17F59" stroke-width="2"/>
+                                    <rect x="15" y="18" width="20" height="14" rx="2" fill="none" stroke="#C5A572" stroke-width="2"/>
+                                    <line x1="15" y1="24" x2="35" y2="24" stroke="#C5A572" stroke-width="1.5"/>
+                                </svg>
+                                <h6 class="text-teal">Collections</h6>
+                                <small class="text-warm">Organized categories</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="p-3">
+                                <svg viewBox="0 0 50 50" width="40" height="40" class="mb-2">
+                                    <circle cx="25" cy="25" r="20" fill="none" stroke="#005F6A" stroke-width="2"/>
+                                    <path d="M18 20 L32 20 L30 35 L20 35 Z" fill="none" stroke="#C5A572" stroke-width="2"/>
+                                    <line x1="22" y1="16" x2="28" y2="16" stroke="#C5A572" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <h6 class="text-teal">Orders</h6>
+                                <small class="text-warm">Customer management</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-lg-5">
+            <!-- Decorative Info Card -->
+            <div class="card mb-4 bloom-hover">
+                <div class="card-body text-center">
+                    <!-- Decorative floral SVG -->
+                    <svg viewBox="0 0 100 100" width="80" height="80" class="mb-3">
+                        <defs>
+                            <radialGradient id="sidebarFloral" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#a8b87a;stop-opacity:0.6"/>
+                                <stop offset="100%" style="stop-color:#8A9A5B;stop-opacity:0.3"/>
+                            </radialGradient>
+                        </defs>
+                        <g fill="url(#sidebarFloral)">
+                            <ellipse cx="50" cy="30" rx="6" ry="15" transform="rotate(0 50 50)"/>
+                            <ellipse cx="50" cy="30" rx="6" ry="15" transform="rotate(60 50 50)"/>
+                            <ellipse cx="50" cy="30" rx="6" ry="15" transform="rotate(120 50 50)"/>
+                            <ellipse cx="50" cy="30" rx="6" ry="15" transform="rotate(180 50 50)"/>
+                            <ellipse cx="50" cy="30" rx="6" ry="15" transform="rotate(240 50 50)"/>
+                            <ellipse cx="50" cy="30" rx="6" ry="15" transform="rotate(300 50 50)"/>
+                        </g>
+                        <circle cx="50" cy="50" r="8" fill="#C5A572"/>
+                    </svg>
+
+                    <h4 class="text-teal">Belle Epoque Design</h4>
+                    <p class="text-warm">
+                        Our website draws inspiration from the Art Nouveau movement of the late 19th century,
+                        featuring organic flowing borders, ornate decorative elements, and the warm palette
+                        of the Belle Epoque era.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Values Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-teal mb-3">Our Values</h4>
+
+                    <div class="d-flex align-items-start mb-3">
+                        <span class="badge bg-sage me-3 mt-1">01</span>
+                        <div>
+                            <strong class="text-teal">Quality</strong>
+                            <p class="mb-0 small text-warm">Excellence in every detail</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-3">
+                        <span class="badge bg-terracotta me-3 mt-1">02</span>
+                        <div>
+                            <strong class="text-teal">Heritage</strong>
+                            <p class="mb-0 small text-warm">Timeless designs that endure</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-3">
+                        <span class="badge bg-teal me-3 mt-1">03</span>
+                        <div>
+                            <strong class="text-teal">Family</strong>
+                            <p class="mb-0 small text-warm">Creating lasting memories</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start">
+                        <span class="badge bg-gold me-3 mt-1">04</span>
+                        <div>
+                            <strong class="text-teal">Service</strong>
+                            <p class="mb-0 small text-warm">Personalized attention</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Card -->
+            <div class="card mt-4" style="background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); border-color: var(--gold);">
+                <div class="card-body text-center" style="color: var(--cream);">
+                    <h5 style="color: var(--cream);">Ready to Explore?</h5>
+                    <p class="small mb-3" style="color: rgba(255,254,249,0.9);">
+                        Visit our boutique database to browse products, collections, and orders.
+                    </p>
+                    <a href="{{ url_for('examples.show_examples') }}" class="btn btn-outline-secondary" style="border-color: var(--gold); color: var(--gold);">
+                        <i class="fas fa-arrow-right me-2"></i>Enter Boutique
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

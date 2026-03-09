@@ -1,0 +1,40 @@
+<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Art Nouveau Corner Ornament -->
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C5A572"/>
+      <stop offset="50%" style="stop-color:#D4B989"/>
+      <stop offset="100%" style="stop-color:#C5A572"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main flowing curve -->
+  <path d="M5 40 Q5 5, 40 5 Q20 20, 40 40 Q20 20, 5 40"
+        fill="none"
+        stroke="url(#goldGradient)"
+        stroke-width="2"
+        stroke-linecap="round"/>
+
+  <!-- Secondary curves -->
+  <path d="M10 35 Q15 15, 35 10"
+        fill="none"
+        stroke="#C5A572"
+        stroke-width="1.5"
+        stroke-linecap="round"/>
+
+  <path d="M15 30 Q18 18, 30 15"
+        fill="none"
+        stroke="#C5A572"
+        stroke-width="1"
+        stroke-linecap="round"
+        opacity="0.7"/>
+
+  <!-- Decorative dots -->
+  <circle cx="40" cy="5" r="3" fill="#C5A572"/>
+  <circle cx="5" cy="40" r="3" fill="#C5A572"/>
+  <circle cx="22" cy="22" r="2" fill="#C5A572"/>
+
+  <!-- Small accent leaves -->
+  <path d="M35 8 Q38 6, 40 8 Q38 10, 35 8" fill="#8A9A5B" opacity="0.6"/>
+  <path d="M8 35 Q6 38, 8 40 Q10 38, 8 35" fill="#8A9A5B" opacity="0.6"/>
+</svg>

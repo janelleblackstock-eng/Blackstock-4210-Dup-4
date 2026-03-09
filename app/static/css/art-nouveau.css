@@ -1,0 +1,1056 @@
+/* ============================================================
+   Art Nouveau (Belle Époque) Stylesheet
+   Serene Family Boutique
+   ============================================================ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&family=Pinyon+Script&display=swap');
+
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+    /* Color Palette */
+    --sage-green: #8A9A5B;
+    --sage-green-light: #a8b87a;
+    --sage-green-dark: #6b7a45;
+    --dusty-terracotta: #C17F59;
+    --terracotta-light: #d49b7a;
+    --terracotta-dark: #a36544;
+    --teal: #005F6A;
+    --teal-light: #007a88;
+    --teal-dark: #004a52;
+    --parchment: #F5F0E6;
+    --parchment-dark: #E8E0D0;
+    --cream: #FFFEF9;
+    --gold: #C5A572;
+    --gold-light: #d4b989;
+    --gold-dark: #a88c5a;
+    --warm-brown: #5C4033;
+    --warm-black: #2C2416;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Crimson Pro', Georgia, serif;
+    --font-script: 'Pinyon Script', cursive;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+
+    /* Border Radius - Organic Shapes */
+    --radius-organic: 40% 60% 55% 45% / 55% 45% 55% 45%;
+    --radius-soft: 8px;
+    --radius-pill: 100px;
+    --radius-leaf: 30% 70% 70% 30% / 30% 30% 70% 70%;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px rgba(92, 64, 51, 0.1);
+    --shadow-medium: 0 8px 30px rgba(92, 64, 51, 0.15);
+    --shadow-gold: 0 4px 15px rgba(197, 165, 114, 0.3);
+
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ============================================================
+   Base Styles & Typography
+   ============================================================ */
+body {
+    background-color: var(--parchment);
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--warm-brown);
+    min-height: 100vh;
+}
+
+/* Parchment texture overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at top left, rgba(197, 165, 114, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(138, 154, 91, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4, h5, h6 {
+    font-weight: 500;
+}
+
+/* Script accent class for decorative text */
+.script-accent {
+    font-family: var(--font-script);
+    font-size: 1.3em;
+    color: var(--gold);
+}
+
+/* ============================================================
+   Navigation - Arch-Shaped Art Nouveau Style
+   ============================================================ */
+.navbar-art-nouveau {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--parchment) 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 0;
+    position: relative;
+}
+
+.navbar-art-nouveau::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+}
+
+.nav-arch-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: var(--space-lg) var(--space-xl);
+    min-height: 80px;
+    position: relative;
+}
+
+.nav-brand-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.nav-brand-center .brand-name {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--teal);
+    text-decoration: none;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+.nav-brand-center .brand-tagline {
+    font-family: var(--font-script);
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-top: -5px;
+}
+
+.nav-brand-center:hover .brand-name {
+    color: var(--teal-light);
+    text-shadow: 0 2px 10px rgba(0, 95, 106, 0.2);
+}
+
+.nav-links-left,
+.nav-links-right {
+    display: flex;
+    gap: var(--space-lg);
+    flex: 1;
+}
+
+.nav-links-left {
+    justify-content: flex-end;
+    padding-right: 120px;
+}
+
+.nav-links-right {
+    justify-content: flex-start;
+    padding-left: 120px;
+}
+
+.nav-art-nouveau-link {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--warm-brown);
+    text-decoration: none;
+    padding: var(--space-sm) var(--space-md);
+    position: relative;
+    transition: var(--transition-smooth);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.nav-art-nouveau-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+}
+
+.nav-art-nouveau-link:hover {
+    color: var(--teal);
+}
+
+.nav-art-nouveau-link:hover::before {
+    width: 100%;
+}
+
+.nav-art-nouveau-link.active {
+    color: var(--teal);
+}
+
+.nav-art-nouveau-link.active::before {
+    width: 100%;
+}
+
+/* Mobile navigation */
+@media (max-width: 768px) {
+    .nav-arch-container {
+        flex-direction: column;
+        padding: var(--space-md);
+    }
+
+    .nav-brand-center {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-bottom: var(--space-md);
+    }
+
+    .nav-links-left,
+    .nav-links-right {
+        justify-content: center;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+}
+
+/* ============================================================
+   Buttons - Pill & Leaf Shaped with Ornate Borders
+   ============================================================ */
+.btn {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.6rem 1.8rem;
+    border-radius: var(--radius-pill);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: var(--transition-smooth);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    border: 2px solid var(--gold);
+    color: var(--cream);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--teal-light) 0%, var(--teal) 100%);
+    border-color: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+    color: var(--cream);
+}
+
+.btn-secondary {
+    background: var(--cream);
+    border: 2px solid var(--gold);
+    color: var(--warm-brown);
+}
+
+.btn-secondary:hover {
+    background: var(--parchment);
+    border-color: var(--gold-dark);
+    color: var(--teal);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--sage-green) 0%, var(--sage-green-light) 100%);
+    border: 2px solid var(--sage-green-dark);
+    color: var(--cream);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, var(--sage-green-light) 0%, var(--sage-green) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(138, 154, 91, 0.4);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, var(--dusty-terracotta) 0%, var(--terracotta-light) 100%);
+    border: 2px solid var(--terracotta-dark);
+    color: var(--cream);
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, var(--terracotta-light) 0%, var(--dusty-terracotta) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(193, 127, 89, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #8B3A3A 0%, #A85454 100%);
+    border: 2px solid #6B2A2A;
+    color: var(--cream);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #A85454 0%, #8B3A3A 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(139, 58, 58, 0.4);
+}
+
+.btn-outline-secondary {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--teal);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--gold);
+    color: var(--warm-black);
+    transform: translateY(-2px);
+}
+
+/* Leaf-shaped button variant */
+.btn-leaf {
+    border-radius: var(--radius-leaf);
+    padding: 0.7rem 2rem;
+}
+
+/* ============================================================
+   Cards - Cream Background with Gold Corner Ornaments
+   ============================================================ */
+.card {
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-soft);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: visible;
+    transition: var(--transition-smooth);
+}
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 25 Q5 5, 25 5 Q15 15, 25 25 Q15 15, 5 25' fill='none' stroke='%23C5A572' stroke-width='1.5'/%3E%3Cpath d='M8 20 Q12 12, 20 8' fill='none' stroke='%23C5A572' stroke-width='1'/%3E%3Ccircle cx='25' cy='5' r='2' fill='%23C5A572'/%3E%3Ccircle cx='5' cy='25' r='2' fill='%23C5A572'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+}
+
+.card::before {
+    top: -5px;
+    left: -5px;
+}
+
+.card::after {
+    bottom: -5px;
+    right: -5px;
+    transform: rotate(180deg);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.card:hover::before,
+.card:hover::after {
+    opacity: 1;
+}
+
+.card-body {
+    padding: var(--space-lg);
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    color: var(--teal);
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+}
+
+.card-text {
+    color: var(--warm-brown);
+    line-height: 1.7;
+}
+
+/* ============================================================
+   Tables - Elegant Headers with Warm Hover States
+   ============================================================ */
+.table {
+    background: var(--cream);
+    border-radius: var(--radius-soft);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--gold);
+}
+
+.table thead th {
+    background: linear-gradient(180deg, var(--teal) 0%, var(--teal-dark) 100%);
+    color: var(--cream);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-md) var(--space-lg);
+    border: none;
+    border-bottom: 3px solid var(--gold);
+}
+
+.table tbody tr {
+    transition: var(--transition-smooth);
+    border-bottom: 1px solid var(--parchment-dark);
+}
+
+.table tbody tr:hover {
+    background: linear-gradient(90deg, var(--parchment) 0%, var(--cream) 50%, var(--parchment) 100%);
+}
+
+.table tbody td {
+    padding: var(--space-md) var(--space-lg);
+    vertical-align: middle;
+    color: var(--warm-brown);
+    border: none;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(245, 240, 230, 0.5);
+}
+
+.table-striped tbody tr:nth-of-type(odd):hover {
+    background: linear-gradient(90deg, var(--parchment) 0%, var(--cream) 50%, var(--parchment) 100%);
+}
+
+/* ============================================================
+   Badges - Sage/Terracotta/Teal Variants
+   ============================================================ */
+.badge {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.4em 0.8em;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.badge.bg-primary,
+.bg-primary {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%) !important;
+    color: var(--cream) !important;
+}
+
+.badge.bg-secondary,
+.bg-secondary {
+    background: linear-gradient(135deg, var(--warm-brown) 0%, #7a5a47 100%) !important;
+    color: var(--cream) !important;
+}
+
+.badge.bg-success,
+.bg-success {
+    background: linear-gradient(135deg, var(--sage-green) 0%, var(--sage-green-light) 100%) !important;
+    color: var(--cream) !important;
+}
+
+.badge.bg-warning,
+.bg-warning {
+    background: linear-gradient(135deg, var(--dusty-terracotta) 0%, var(--terracotta-light) 100%) !important;
+    color: var(--cream) !important;
+}
+
+.badge.bg-info,
+.bg-info {
+    background: linear-gradient(135deg, var(--teal-light) 0%, var(--teal) 100%) !important;
+    color: var(--cream) !important;
+}
+
+.badge.bg-danger,
+.bg-danger {
+    background: linear-gradient(135deg, #8B3A3A 0%, #A85454 100%) !important;
+    color: var(--cream) !important;
+}
+
+/* ============================================================
+   Forms - Soft Inputs with Gold Focus States
+   ============================================================ */
+.form-control,
+.form-select {
+    background-color: var(--cream);
+    border: 1px solid var(--parchment-dark);
+    border-radius: var(--radius-soft);
+    padding: 0.6rem 1rem;
+    font-family: var(--font-body);
+    color: var(--warm-brown);
+    transition: var(--transition-smooth);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--cream);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.25);
+    color: var(--warm-brown);
+}
+
+.form-label {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+textarea.form-control {
+    min-height: 100px;
+}
+
+/* ============================================================
+   Modals - Double-Border Ornate Frames
+   ============================================================ */
+.modal-content {
+    background: var(--cream);
+    border: 3px solid var(--gold);
+    border-radius: var(--radius-soft);
+    box-shadow: var(--shadow-medium), 0 0 0 1px var(--gold-light);
+    position: relative;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid var(--gold);
+    border-radius: calc(var(--radius-soft) - 4px);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.modal-header {
+    background: linear-gradient(180deg, var(--parchment) 0%, var(--cream) 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: var(--space-lg);
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--teal);
+    font-size: 1.4rem;
+}
+
+.modal-body {
+    padding: var(--space-xl);
+    color: var(--warm-brown);
+}
+
+.modal-footer {
+    background: linear-gradient(0deg, var(--parchment) 0%, var(--cream) 100%);
+    border-top: 1px solid var(--parchment-dark);
+    padding: var(--space-lg);
+}
+
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23005F6A'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: 0.7;
+    transition: var(--transition-smooth);
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* ============================================================
+   Tabs - Art Nouveau Style
+   ============================================================ */
+.nav-tabs {
+    border-bottom: 2px solid var(--gold);
+    gap: var(--space-xs);
+}
+
+.nav-tabs .nav-link {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--warm-brown);
+    background: var(--parchment);
+    border: 1px solid var(--parchment-dark);
+    border-bottom: none;
+    border-radius: var(--radius-soft) var(--radius-soft) 0 0;
+    padding: 0.8rem 1.5rem;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--teal);
+    background: var(--cream);
+    border-color: var(--gold);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--teal);
+    background: var(--cream);
+    border-color: var(--gold);
+    border-bottom-color: var(--cream);
+}
+
+.nav-tabs .nav-link .badge {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+}
+
+.tab-content {
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-top: none;
+    border-radius: 0 0 var(--radius-soft) var(--radius-soft);
+    padding: var(--space-lg);
+}
+
+/* ============================================================
+   Alerts - Art Nouveau Style
+   ============================================================ */
+.alert {
+    border-radius: var(--radius-soft);
+    border: 1px solid;
+    padding: var(--space-md) var(--space-lg);
+    position: relative;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, rgba(138, 154, 91, 0.15) 0%, rgba(138, 154, 91, 0.05) 100%);
+    border-color: var(--sage-green);
+    color: var(--sage-green-dark);
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(139, 58, 58, 0.15) 0%, rgba(139, 58, 58, 0.05) 100%);
+    border-color: #8B3A3A;
+    color: #6B2A2A;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, rgba(193, 127, 89, 0.15) 0%, rgba(193, 127, 89, 0.05) 100%);
+    border-color: var(--dusty-terracotta);
+    color: var(--terracotta-dark);
+}
+
+.alert-info {
+    background: linear-gradient(135deg, rgba(0, 95, 106, 0.15) 0%, rgba(0, 95, 106, 0.05) 100%);
+    border-color: var(--teal);
+    color: var(--teal-dark);
+}
+
+/* ============================================================
+   S-Curve Dividers & Decorative Elements
+   ============================================================ */
+.s-curve-divider {
+    width: 100%;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 60' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q300 0, 600 30 T1200 30' fill='none' stroke='%23C5A572' stroke-width='2'/%3E%3Cpath d='M0 35 Q300 5, 600 35 T1200 35' fill='none' stroke='%23C5A572' stroke-width='1' opacity='0.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+    margin: var(--space-xl) 0;
+}
+
+.flowing-divider {
+    width: 200px;
+    height: 30px;
+    margin: var(--space-lg) auto;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 C50 5, 50 25, 100 15 C150 5, 150 25, 200 15' fill='none' stroke='%23C5A572' stroke-width='2'/%3E%3Ccircle cx='100' cy='15' r='4' fill='%23C5A572'/%3E%3Ccircle cx='0' cy='15' r='3' fill='%23C5A572'/%3E%3Ccircle cx='200' cy='15' r='3' fill='%23C5A572'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.corner-flourish {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 40 Q5 5, 40 5 Q20 20, 40 40 Q20 20, 5 40' fill='none' stroke='%23C5A572' stroke-width='2'/%3E%3Cpath d='M10 35 Q15 15, 35 10' fill='none' stroke='%23C5A572' stroke-width='1.5'/%3E%3Cpath d='M15 30 Q18 18, 30 15' fill='none' stroke='%23C5A572' stroke-width='1'/%3E%3Ccircle cx='40' cy='5' r='3' fill='%23C5A572'/%3E%3Ccircle cx='5' cy='40' r='3' fill='%23C5A572'/%3E%3Ccircle cx='22' cy='22' r='2' fill='%23C5A572'/%3E%3C/svg%3E") center/contain no-repeat;
+    pointer-events: none;
+}
+
+.corner-flourish.top-left {
+    top: -10px;
+    left: -10px;
+}
+
+.corner-flourish.top-right {
+    top: -10px;
+    right: -10px;
+    transform: scaleX(-1);
+}
+
+.corner-flourish.bottom-left {
+    bottom: -10px;
+    left: -10px;
+    transform: scaleY(-1);
+}
+
+.corner-flourish.bottom-right {
+    bottom: -10px;
+    right: -10px;
+    transform: scale(-1, -1);
+}
+
+/* ============================================================
+   Floral Bloom Hover Animation
+   ============================================================ */
+.bloom-hover {
+    position: relative;
+    overflow: visible;
+}
+
+.bloom-hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%) scale(0);
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238A9A5B' opacity='0.3'%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(0 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(45 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(90 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(135 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(180 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(225 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(270 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='8' ry='20' transform='rotate(315 50 50)'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='10' fill='%23C5A572'/%3E%3C/svg%3E") center/contain no-repeat;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.bloom-hover:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* ============================================================
+   Page Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes vineGrow {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-vine-grow {
+    animation: vineGrow 1s ease-out forwards;
+}
+
+/* Staggered children animation */
+.stagger-children > * {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ============================================================
+   Gold Shimmer Effect
+   ============================================================ */
+@keyframes goldShimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.shimmer-gold {
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 25%, #E8D5A8 50%, var(--gold-light) 75%, var(--gold) 100%);
+    background-size: 200% 100%;
+    animation: goldShimmer 3s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================================
+   Hero Section Styles
+   ============================================================ */
+.hero-art-nouveau {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--parchment) 100%);
+    border: 2px solid var(--gold);
+    border-radius: var(--radius-soft);
+    padding: var(--space-xxl);
+    position: relative;
+    overflow: visible;
+    margin-bottom: var(--space-xl);
+}
+
+.hero-art-nouveau .corner-flourish {
+    width: 100px;
+    height: 100px;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-style: italic;
+    color: var(--teal);
+    margin-bottom: var(--space-sm);
+}
+
+.hero-script {
+    font-family: var(--font-script);
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: var(--space-lg);
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    color: var(--warm-brown);
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.8;
+}
+
+/* ============================================================
+   Organic Grid Layout
+   ============================================================ */
+.organic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    padding: var(--space-md);
+}
+
+.organic-grid .card {
+    height: 100%;
+}
+
+/* ============================================================
+   Ornate Blockquote
+   ============================================================ */
+blockquote,
+.blockquote-ornate {
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    padding: var(--space-lg) var(--space-xl);
+    margin: var(--space-xl) 0;
+    position: relative;
+    font-style: italic;
+    color: var(--warm-brown);
+}
+
+blockquote::before,
+.blockquote-ornate::before {
+    content: '"';
+    font-family: var(--font-script);
+    font-size: 4rem;
+    color: var(--gold);
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    line-height: 1;
+}
+
+/* ============================================================
+   Container Override
+   ============================================================ */
+.container {
+    margin-top: var(--space-xxl);
+    padding-bottom: var(--space-xl);
+}
+
+/* ============================================================
+   Footer Styles
+   ============================================================ */
+.footer-art-nouveau {
+    background: linear-gradient(0deg, var(--parchment-dark) 0%, var(--parchment) 100%);
+    border-top: 2px solid var(--gold);
+    padding: var(--space-xl) 0;
+    margin-top: var(--space-xxl);
+    text-align: center;
+}
+
+.footer-art-nouveau p {
+    font-family: var(--font-heading);
+    color: var(--warm-brown);
+    margin: 0;
+}
+
+.footer-art-nouveau .script-accent {
+    display: block;
+    margin-top: var(--space-sm);
+}
+
+/* ============================================================
+   Code Styling
+   ============================================================ */
+code {
+    background: var(--parchment);
+    color: var(--teal);
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    border: 1px solid var(--parchment-dark);
+}
+
+/* ============================================================
+   Responsive Adjustments
+   ============================================================ */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-script {
+        font-size: 1.6rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --space-lg: 1rem;
+        --space-xl: 1.5rem;
+        --space-xxl: 2rem;
+    }
+
+    .hero-art-nouveau {
+        padding: var(--space-xl);
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-script {
+        font-size: 1.3rem;
+    }
+
+    .card::before,
+    .card::after {
+        display: none;
+    }
+
+    .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+.text-sage { color: var(--sage-green) !important; }
+.text-terracotta { color: var(--dusty-terracotta) !important; }
+.text-teal { color: var(--teal) !important; }
+.text-gold { color: var(--gold) !important; }
+.text-warm { color: var(--warm-brown) !important; }
+
+.bg-sage { background-color: var(--sage-green) !important; }
+.bg-terracotta { background-color: var(--dusty-terracotta) !important; }
+.bg-teal { background-color: var(--teal) !important; }
+.bg-gold { background-color: var(--gold) !important; }
+.bg-parchment { background-color: var(--parchment) !important; }
+.bg-cream { background-color: var(--cream) !important; }
+
+.border-gold { border-color: var(--gold) !important; }
+.border-sage { border-color: var(--sage-green) !important; }
+.border-teal { border-color: var(--teal) !important; }

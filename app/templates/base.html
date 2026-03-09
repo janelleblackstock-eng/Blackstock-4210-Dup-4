@@ -2,138 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GCSU MIS Starter Kit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serene Family Boutique</title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --gcsu-blue: #003399;
-            --gcsu-green: #006633;
-            --gcsu-light-blue: #e6f2ff;
-            --gcsu-light-green: #e6f7e6;
-        }
-        
-        body {
-            background: linear-gradient(135deg, var(--gcsu-light-blue) 0%, #ffffff 50%, var(--gcsu-light-green) 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .navbar-gcsu {
-            background: linear-gradient(90deg, var(--gcsu-blue) 0%, var(--gcsu-green) 100%);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1rem 0;
-        }
-        
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.4rem;
-            color: white !important;
-        }
-        
-        .navbar-brand:hover {
-            color: #f8f9fa !important;
-            transform: scale(1.05);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-nav .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
-            padding: 0.5rem 1rem !important;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-nav .nav-link:hover {
-            color: white !important;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        .container {
-            margin-top: 2rem;
-        }
-        
-        .alert {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .alert-danger {
-            background: linear-gradient(45deg, #dc3545, #c82333);
-            color: white;
-        }
-        
-        .alert-success {
-            background: linear-gradient(45deg, var(--gcsu-green), #28a745);
-            color: white;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(45deg, var(--gcsu-blue), var(--gcsu-green));
-            border: none;
-            border-radius: 25px;
-            padding: 0.5rem 1.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 51, 153, 0.3);
-        }
-        
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        h1, h2, h3 {
-            color: var(--gcsu-blue);
-        }
-        
-        .table {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .table thead th {
-            background: linear-gradient(90deg, var(--gcsu-blue), var(--gcsu-green));
-            color: white;
-            border: none;
-            font-weight: 600;
-        }
-    </style>
+
+    <!-- Art Nouveau Custom Styles -->
+    <link href="{{ url_for('static', filename='css/art-nouveau.css') }}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-gcsu">
-        <a class="navbar-brand" href="{{ url_for('index') }}">
-            <i class="fas fa-home me-2"></i>GCSU MIS Starter Kit
-        </a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('about') }}">
-                        <i class="fas fa-info-circle me-1"></i>About
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('examples.show_examples') }}">
-                        <i class="fas fa-database me-1"></i>Examples
-                    </a>
-                </li>
-            </ul>
+    <!-- Art Nouveau Navigation -->
+    <nav class="navbar-art-nouveau">
+        <div class="nav-arch-container">
+            <div class="nav-links-left">
+                <a href="{{ url_for('index') }}" class="nav-art-nouveau-link {% if request.endpoint == 'index' %}active{% endif %}">
+                    Home
+                </a>
+                <a href="{{ url_for('about') }}" class="nav-art-nouveau-link {% if request.endpoint == 'about' %}active{% endif %}">
+                    About
+                </a>
+            </div>
+
+            <a href="{{ url_for('index') }}" class="nav-brand-center">
+                <span class="brand-name">Serene Family Boutique</span>
+                <span class="brand-tagline">Est. 2024</span>
+            </a>
+
+            <div class="nav-links-right">
+                <a href="{{ url_for('examples.show_examples') }}" class="nav-art-nouveau-link {% if request.endpoint and 'examples' in request.endpoint %}active{% endif %}">
+                    Boutique
+                </a>
+            </div>
         </div>
+
+        <!-- Decorative arch SVG -->
+        <svg class="nav-arch-decoration" viewBox="0 0 1200 20" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 20px; pointer-events: none;">
+            <path d="M0 20 Q300 0, 600 5 Q900 10, 1200 20" fill="none" stroke="#C5A572" stroke-width="1" opacity="0.5"/>
+        </svg>
     </nav>
 
     <div class="container">
@@ -141,21 +50,30 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show mt-3" role="alert">
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show mt-3 animate-fade-in-up" role="alert">
                         {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        
+
         {% block content %}{% endblock %}
     </div>
 
+    <!-- Art Nouveau Footer -->
+    <footer class="footer-art-nouveau">
+        <div class="container">
+            <div class="flowing-divider"></div>
+            <p>Serene Family Boutique</p>
+            <span class="script-accent">Curated with Care</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     {% block scripts %}{% endblock %}
 </body>
 </html>
-

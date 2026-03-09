@@ -1,0 +1,29 @@
+<svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
+  <!-- Art Nouveau Flowing Horizontal Divider -->
+  <defs>
+    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C5A572;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#C5A572;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#C5A572;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main flowing line -->
+  <path d="M0 15 C50 5, 50 25, 100 15 C150 5, 150 25, 200 15"
+        fill="none"
+        stroke="url(#flowGradient)"
+        stroke-width="2"
+        stroke-linecap="round"/>
+
+  <!-- Center ornament -->
+  <circle cx="100" cy="15" r="5" fill="#C5A572"/>
+  <circle cx="100" cy="15" r="8" fill="none" stroke="#C5A572" stroke-width="1" opacity="0.5"/>
+
+  <!-- End ornaments -->
+  <circle cx="10" cy="15" r="3" fill="#C5A572" opacity="0.6"/>
+  <circle cx="190" cy="15" r="3" fill="#C5A572" opacity="0.6"/>
+
+  <!-- Small decorative leaves -->
+  <path d="M95 10 Q100 5, 105 10 Q100 8, 95 10" fill="#8A9A5B" opacity="0.5"/>
+  <path d="M95 20 Q100 25, 105 20 Q100 22, 95 20" fill="#8A9A5B" opacity="0.5"/>
+</svg>
