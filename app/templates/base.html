@@ -18,21 +18,13 @@
     <!-- Art Nouveau Navigation -->
     <nav class="navbar-art-nouveau">
         <div class="nav-arch-container">
-            <div class="nav-links-left">
+            <div class="nav-links-center">
                 <a href="{{ url_for('index') }}" class="nav-art-nouveau-link {% if request.endpoint == 'index' %}active{% endif %}">
                     Home
                 </a>
                 <a href="{{ url_for('about') }}" class="nav-art-nouveau-link {% if request.endpoint == 'about' %}active{% endif %}">
                     About
                 </a>
-            </div>
-
-            <a href="{{ url_for('index') }}" class="nav-brand-center">
-                <span class="brand-name">Serene Family Boutique</span>
-                <span class="brand-tagline">Est. 2024</span>
-            </a>
-
-            <div class="nav-links-right">
                 <a href="{{ url_for('examples.show_examples') }}" class="nav-art-nouveau-link {% if request.endpoint and 'examples' in request.endpoint %}active{% endif %}">
                     Boutique
                 </a>
