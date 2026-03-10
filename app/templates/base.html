@@ -28,6 +28,9 @@
                 <a href="{{ url_for('examples.show_examples') }}" class="nav-art-nouveau-link {% if request.endpoint and 'examples' in request.endpoint %}active{% endif %}">
                     Boutique
                 </a>
+                <a href="{{ url_for('shop_by_occasion') }}" class="nav-art-nouveau-link {% if request.endpoint == 'shop_by_occasion' %}active{% endif %}">
+                    Shop by Occasion
+                </a>
             </div>
         </div>
 
@@ -65,6 +68,16 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Theme Persistence -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme && savedTheme !== 'default') {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
 
     {% block scripts %}{% endblock %}
 </body>

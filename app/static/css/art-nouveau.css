@@ -1034,3 +1034,493 @@ code {
 .border-gold { border-color: var(--gold) !important; }
 .border-sage { border-color: var(--sage-green) !important; }
 .border-teal { border-color: var(--teal) !important; }
+
+/* ============================================================
+   Dark Theme
+   ============================================================ */
+[data-theme="dark"] {
+    --parchment: #1a1a1a;
+    --parchment-dark: #2a2a2a;
+    --cream: #242424;
+    --warm-brown: #d4c4b0;
+    --warm-black: #f5f0e6;
+    --teal: #00a0b0;
+    --teal-light: #00c4d6;
+    --teal-dark: #007a88;
+    --gold: #d4b896;
+    --gold-light: #e8d0a8;
+    --gold-dark: #b89a70;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--parchment);
+    color: var(--warm-brown);
+}
+
+[data-theme="dark"] body::before {
+    background:
+        radial-gradient(ellipse at top left, rgba(0, 160, 176, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(138, 154, 91, 0.1) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .navbar-art-nouveau {
+    background: linear-gradient(180deg, #1f1f1f 0%, #1a1a1a 100%);
+    border-bottom-color: var(--gold);
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .tab-content {
+    background: var(--cream);
+    border-color: var(--gold);
+}
+
+[data-theme="dark"] .table {
+    background: var(--cream);
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+    background: linear-gradient(90deg, #2a2a2a 0%, #303030 50%, #2a2a2a 100%);
+}
+
+[data-theme="dark"] .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(42, 42, 42, 0.5);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: #2a2a2a;
+    border-color: #3a3a3a;
+    color: var(--warm-brown);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: #2a2a2a;
+    border-color: var(--gold);
+    color: var(--warm-brown);
+}
+
+[data-theme="dark"] .nav-tabs .nav-link {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+    color: var(--warm-brown);
+}
+
+[data-theme="dark"] .nav-tabs .nav-link.active,
+[data-theme="dark"] .nav-tabs .nav-link:hover {
+    background: var(--cream);
+    border-color: var(--gold);
+    color: var(--teal);
+}
+
+[data-theme="dark"] .modal-header {
+    background: linear-gradient(180deg, #2a2a2a 0%, var(--cream) 100%);
+}
+
+[data-theme="dark"] .modal-footer {
+    background: linear-gradient(0deg, #2a2a2a 0%, var(--cream) 100%);
+}
+
+[data-theme="dark"] .footer-art-nouveau {
+    background: linear-gradient(0deg, #151515 0%, #1a1a1a 100%);
+}
+
+[data-theme="dark"] code {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+}
+
+[data-theme="dark"] .alert-success {
+    background: linear-gradient(135deg, rgba(138, 154, 91, 0.25) 0%, rgba(138, 154, 91, 0.1) 100%);
+}
+
+[data-theme="dark"] .alert-danger {
+    background: linear-gradient(135deg, rgba(139, 58, 58, 0.25) 0%, rgba(139, 58, 58, 0.1) 100%);
+}
+
+[data-theme="dark"] .alert-warning {
+    background: linear-gradient(135deg, rgba(193, 127, 89, 0.25) 0%, rgba(193, 127, 89, 0.1) 100%);
+}
+
+[data-theme="dark"] .alert-info {
+    background: linear-gradient(135deg, rgba(0, 160, 176, 0.25) 0%, rgba(0, 160, 176, 0.1) 100%);
+}
+
+/* ============================================================
+   Minimal Theme
+   ============================================================ */
+[data-theme="minimal"] {
+    --parchment: #ffffff;
+    --parchment-dark: #f0f0f0;
+    --cream: #fafafa;
+    --warm-brown: #333333;
+    --warm-black: #111111;
+    --teal: #0066cc;
+    --teal-light: #3388dd;
+    --teal-dark: #004499;
+    --gold: #888888;
+    --gold-light: #aaaaaa;
+    --gold-dark: #666666;
+    --sage-green: #28a745;
+    --sage-green-light: #48c765;
+    --sage-green-dark: #1e7e34;
+    --dusty-terracotta: #fd7e14;
+    --terracotta-light: #fda64a;
+    --terracotta-dark: #c96a00;
+}
+
+[data-theme="minimal"] body {
+    background-color: var(--parchment);
+    background-image: none;
+    color: var(--warm-brown);
+}
+
+[data-theme="minimal"] body::before {
+    display: none;
+}
+
+[data-theme="minimal"] .navbar-art-nouveau {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+[data-theme="minimal"] .navbar-art-nouveau::after {
+    display: none;
+}
+
+[data-theme="minimal"] .card {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="minimal"] .card::before,
+[data-theme="minimal"] .card::after {
+    display: none;
+}
+
+[data-theme="minimal"] .btn {
+    border-radius: 4px;
+}
+
+[data-theme="minimal"] .btn::before {
+    display: none;
+}
+
+[data-theme="minimal"] .badge {
+    border-radius: 4px;
+}
+
+[data-theme="minimal"] .table {
+    border-radius: 4px;
+}
+
+[data-theme="minimal"] .modal-content {
+    border-width: 1px;
+    border-radius: 8px;
+}
+
+[data-theme="minimal"] .modal-content::before {
+    display: none;
+}
+
+[data-theme="minimal"] .flowing-divider,
+[data-theme="minimal"] .s-curve-divider,
+[data-theme="minimal"] .corner-flourish {
+    display: none;
+}
+
+[data-theme="minimal"] .script-accent {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--gold);
+}
+
+[data-theme="minimal"] .footer-art-nouveau {
+    background: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+}
+
+[data-theme="minimal"] .hero-art-nouveau {
+    border-width: 1px;
+    border-radius: 8px;
+}
+
+/* ============================================================
+   Theme Switcher Buttons
+   ============================================================ */
+.theme-switcher {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.theme-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--gold);
+    background: var(--cream);
+    color: var(--warm-brown);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border-radius: var(--radius-soft);
+}
+
+.theme-btn:hover {
+    background: var(--parchment);
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+.theme-btn.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--cream);
+}
+
+/* ============================================================
+   Shop by Occasion Page Styles
+   ============================================================ */
+
+/* Occasion Category Grid */
+.occasion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xxl);
+}
+
+.occasion-card {
+    background: var(--cream);
+    border: 2px solid var(--gold);
+    border-radius: var(--radius-soft);
+    padding: var(--space-xl);
+    text-align: center;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.occasion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    transform: scaleX(0);
+    transition: var(--transition-smooth);
+}
+
+.occasion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--teal);
+}
+
+.occasion-card:hover::before {
+    transform: scaleX(1);
+}
+
+.occasion-card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-lg);
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.occasion-card-icon i {
+    font-size: 2rem;
+    color: var(--cream);
+}
+
+.occasion-card:hover .occasion-card-icon {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    transform: scale(1.1);
+}
+
+.occasion-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--teal);
+    margin-bottom: var(--space-sm);
+}
+
+.occasion-card p {
+    color: var(--warm-brown);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Occasion Section */
+.occasion-section {
+    margin-bottom: var(--space-xxl);
+    padding-top: var(--space-xl);
+}
+
+.occasion-section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--gold);
+}
+
+.occasion-section-header i {
+    font-size: 1.8rem;
+    color: var(--gold);
+}
+
+.occasion-section-header h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    color: var(--teal);
+}
+
+.occasion-section-description {
+    color: var(--warm-brown);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xl);
+    font-style: italic;
+}
+
+/* Occasion Product Grid */
+.occasion-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+}
+
+.occasion-product-card {
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-soft);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.occasion-product-card::before,
+.occasion-product-card::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 25 Q5 5, 25 5 Q15 15, 25 25 Q15 15, 5 25' fill='none' stroke='%23C5A572' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+}
+
+.occasion-product-card::before {
+    top: 5px;
+    left: 5px;
+}
+
+.occasion-product-card::after {
+    bottom: 5px;
+    right: 5px;
+    transform: rotate(180deg);
+}
+
+.occasion-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.occasion-product-card:hover::before,
+.occasion-product-card:hover::after {
+    opacity: 1;
+}
+
+.occasion-product-image {
+    height: 180px;
+    background: linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--gold);
+}
+
+.occasion-product-image i {
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.6;
+}
+
+.occasion-product-info {
+    padding: var(--space-lg);
+}
+
+.occasion-product-info h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--teal);
+    margin-bottom: var(--space-xs);
+}
+
+.occasion-product-price {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+}
+
+.occasion-product-description {
+    color: var(--warm-brown);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+}
+
+/* Responsive adjustments for occasion page */
+@media (max-width: 768px) {
+    .occasion-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+
+    .occasion-card {
+        padding: var(--space-lg);
+    }
+
+    .occasion-card-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .occasion-card-icon i {
+        font-size: 1.5rem;
+    }
+
+    .occasion-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .occasion-product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .occasion-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .occasion-section-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
