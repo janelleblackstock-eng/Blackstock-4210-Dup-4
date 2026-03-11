@@ -35,6 +35,20 @@ def validate_price(price_str):
         return False, 0.0, "Price must be a valid number."
 
 
+def validate_name(name_str):
+    """
+    Validate that name is not empty or whitespace-only.
+
+    Returns (is_valid, cleaned_name, error_message)
+    """
+    if not name_str:
+        return False, "", "Name is required."
+    cleaned = name_str.strip()
+    if not cleaned:
+        return False, "", "Name cannot be empty or whitespace only."
+    return True, cleaned, None
+
+
 # ============================================================
 # Products CRUD
 # ============================================================
@@ -42,6 +56,9 @@ def validate_price(price_str):
 @examples.route('/', methods=['GET', 'POST'])
 def show_examples():
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return render_template('examples.html', all_products=[], all_collections=[], all_orders=[])
     cursor = db.cursor()
 
     # Handle POST request to add a new product
@@ -52,6 +69,13 @@ def show_examples():
         sku = request.form.get('sku', '')
         quantity = request.form.get('quantity', '0')
         collection_id = request.form.get('collection_id') or None
+        is_active = 1 if request.form.get('is_active') else 0
+
+        # Validate name
+        is_valid, name, error = validate_name(name)
+        if not is_valid:
+            flash(error, 'danger')
+            return redirect(url_for('examples.show_examples'))
 
         # Validate quantity (business rule: must be >= 0)
         is_valid, quantity_int, error = validate_quantity(quantity)
@@ -66,8 +90,8 @@ def show_examples():
             return redirect(url_for('examples.show_examples'))
 
         cursor.execute(
-            'INSERT INTO products (name, description, price, sku, quantity, collection_id) VALUES (%s, %s, %s, %s, %s, %s)',
-            (name, description, price_float, sku, quantity_int, collection_id)
+            'INSERT INTO products (name, description, price, sku, quantity, collection_id, is_active) VALUES (%s, %s, %s, %s, %s, %s, %s)',
+            (name, description, price_float, sku, quantity_int, collection_id, is_active)
         )
         db.commit()
 
@@ -93,6 +117,9 @@ def show_examples():
 @examples.route('/update_product/<int:product_id>', methods=['POST'])
 def update_product(product_id):
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     name = request.form['name']
@@ -101,6 +128,13 @@ def update_product(product_id):
     sku = request.form.get('sku', '')
     quantity = request.form.get('quantity', '0')
     collection_id = request.form.get('collection_id') or None
+    is_active = 1 if request.form.get('is_active') else 0
+
+    # Validate name
+    is_valid, name, error = validate_name(name)
+    if not is_valid:
+        flash(error, 'danger')
+        return redirect(url_for('examples.show_examples'))
 
     # Validate quantity (business rule: must be >= 0)
     is_valid, quantity_int, error = validate_quantity(quantity)
@@ -115,8 +149,8 @@ def update_product(product_id):
         return redirect(url_for('examples.show_examples'))
 
     cursor.execute(
-        'UPDATE products SET name = %s, description = %s, price = %s, sku = %s, quantity = %s, collection_id = %s WHERE id = %s',
-        (name, description, price_float, sku, quantity_int, collection_id, product_id)
+        'UPDATE products SET name = %s, description = %s, price = %s, sku = %s, quantity = %s, collection_id = %s, is_active = %s WHERE id = %s',
+        (name, description, price_float, sku, quantity_int, collection_id, is_active, product_id)
     )
     db.commit()
 
@@ -127,6 +161,9 @@ def update_product(product_id):
 @examples.route('/delete_product/<int:product_id>', methods=['POST'])
 def delete_product(product_id):
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     cursor.execute('DELETE FROM products WHERE id = %s', (product_id,))
@@ -143,10 +180,19 @@ def delete_product(product_id):
 @examples.route('/add_collection', methods=['POST'])
 def add_collection():
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     name = request.form['name']
     description = request.form.get('description', '')
+
+    # Validate name
+    is_valid, name, error = validate_name(name)
+    if not is_valid:
+        flash(error, 'danger')
+        return redirect(url_for('examples.show_examples'))
 
     cursor.execute(
         'INSERT INTO collections (name, description) VALUES (%s, %s)',
@@ -161,10 +207,19 @@ def add_collection():
 @examples.route('/update_collection/<int:collection_id>', methods=['POST'])
 def update_collection(collection_id):
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     name = request.form['name']
     description = request.form.get('description', '')
+
+    # Validate name
+    is_valid, name, error = validate_name(name)
+    if not is_valid:
+        flash(error, 'danger')
+        return redirect(url_for('examples.show_examples'))
 
     cursor.execute(
         'UPDATE collections SET name = %s, description = %s WHERE id = %s',
@@ -179,6 +234,9 @@ def update_collection(collection_id):
 @examples.route('/delete_collection/<int:collection_id>', methods=['POST'])
 def delete_collection(collection_id):
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     # CASCADE DELETE will automatically delete associated products
@@ -196,6 +254,9 @@ def delete_collection(collection_id):
 @examples.route('/add_order', methods=['POST'])
 def add_order():
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     customer_name = request.form['customer_name']
@@ -204,6 +265,12 @@ def add_order():
     shipping_address = request.form.get('shipping_address', '')
     order_total = request.form['order_total']
     status = request.form.get('status', 'pending')
+
+    # Validate customer name
+    is_valid, customer_name, error = validate_name(customer_name)
+    if not is_valid:
+        flash('Customer name is required.', 'danger')
+        return redirect(url_for('examples.show_examples'))
 
     # Validate order total
     is_valid, total_float, error = validate_price(order_total)
@@ -224,6 +291,9 @@ def add_order():
 @examples.route('/update_order/<int:order_id>', methods=['POST'])
 def update_order(order_id):
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     customer_name = request.form['customer_name']
@@ -232,6 +302,12 @@ def update_order(order_id):
     shipping_address = request.form.get('shipping_address', '')
     order_total = request.form['order_total']
     status = request.form.get('status', 'pending')
+
+    # Validate customer name
+    is_valid, customer_name, error = validate_name(customer_name)
+    if not is_valid:
+        flash('Customer name is required.', 'danger')
+        return redirect(url_for('examples.show_examples'))
 
     # Validate order total
     is_valid, total_float, error = validate_price(order_total)
@@ -252,6 +328,9 @@ def update_order(order_id):
 @examples.route('/delete_order/<int:order_id>', methods=['POST'])
 def delete_order(order_id):
     db = get_db()
+    if db is None:
+        flash('Database connection failed. Please try again later.', 'danger')
+        return redirect(url_for('examples.show_examples'))
     cursor = db.cursor()
 
     # CASCADE DELETE will automatically delete associated order items

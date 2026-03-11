@@ -55,37 +55,52 @@
         <div class="occasion-product-grid">
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-tshirt"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/linen-travel-blazer.jpg') }}"
+                         alt="Linen Travel Blazer - Breathable linen blend with relaxed silhouette">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Linen Travel Blazer</h4>
                     <p class="occasion-product-price">$185</p>
                     <p class="occasion-product-description">Breathable linen blend with a relaxed silhouette</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 55% Linen, 45% Cotton blend<br>
+                        <small>Relaxed silhouette with patch pockets and single-button closure. Breathable natural fibers keep you cool while traveling. Unlined for packability.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-wind"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/silk-scarf.webp') }}"
+                         alt="Silk Scarf Collection - Versatile prints to elevate any travel outfit">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Silk Scarf Collection</h4>
                     <p class="occasion-product-price">$65</p>
                     <p class="occasion-product-description">Versatile prints to elevate any travel outfit</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 100% Mulberry Silk (19 momme)<br>
+                        <small>Hand-rolled edges with vintage botanical prints. Wear as neck scarf, headband, or bag accessory. 35 x 35 inches. Dry clean recommended.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-suitcase-rolling"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/canvas-weekender-bag.webp') }}"
+                         alt="Canvas Weekender Bag - Spacious yet compact with leather accents">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Canvas Weekender Bag</h4>
                     <p class="occasion-product-price">$225</p>
                     <p class="occasion-product-description">Spacious yet compact, with leather accents</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 18oz Waxed Cotton Canvas + Full-Grain Leather trim<br>
+                        <small>Solid brass hardware, YKK zippers. Interior zip pocket, exterior slip pocket, detachable shoulder strap. 20 x 11 x 10 inches.</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,37 +117,52 @@
         <div class="occasion-product-grid">
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-shopping-bag"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/velvet-evening-clutch.webp') }}"
+                         alt="Velvet Evening Clutch - Rich velvet with gold-tone hardware">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Velvet Evening Clutch</h4>
                     <p class="occasion-product-price">$125</p>
                     <p class="occasion-product-description">Rich velvet with gold-tone hardware</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> Cotton Velvet with Satin Polyester lining<br>
+                        <small>Gold-plated brass kiss-lock closure, optional 24-inch chain strap. Interior slip pocket. 10 x 5 x 2 inches. Available in burgundy, emerald, navy.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-gem"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/pearl-drop-earrings.png') }}"
+                         alt="Pearl Drop Earrings - Timeless freshwater pearls on delicate chains">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Pearl Drop Earrings</h4>
                     <p class="occasion-product-price">$95</p>
                     <p class="occasion-product-description">Timeless freshwater pearls on delicate chains</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> AAA Freshwater Pearls (8-9mm) on 14K Gold-Filled chains<br>
+                        <small>Hypoallergenic surgical steel posts with silicone backs. 1.5 inch drop length. Hand-selected for luster.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-user-tie"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/satin-wrap-dress.webp') }}"
+                         alt="Satin Wrap Dress - Flowing silhouette in lustrous champagne satin">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Satin Wrap Dress</h4>
                     <p class="occasion-product-price">$275</p>
                     <p class="occasion-product-description">Flowing silhouette in lustrous champagne satin</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 97% Polyester, 3% Spandex Charmeuse Satin<br>
+                        <small>Fully lined bodice, flutter sleeves, adjustable wrap closure, self-tie belt. Midi length (45 inches). Machine washable delicate.</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,37 +179,52 @@
         <div class="occasion-product-grid">
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-spa"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/floral-midi-dress.webp') }}"
+                         alt="Floral Midi Dress - Romantic botanical print with flowing skirt">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Floral Midi Dress</h4>
                     <p class="occasion-product-price">$245</p>
                     <p class="occasion-product-description">Romantic botanical print with flowing skirt</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 100% Polyester Chiffon with Polyester lining<br>
+                        <small>Exclusive watercolor floral print. Fitted bodice with ruching, back invisible zipper. Midi skirt with gentle flare. Sizes 2-14. Dry clean only.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-crown"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/gold-statement-necklace.webp') }}"
+                         alt="Gold Statement Necklace - Art deco-inspired design in brushed gold">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Gold Statement Necklace</h4>
                     <p class="occasion-product-price">$145</p>
                     <p class="occasion-product-description">Art deco-inspired design in brushed gold</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> Brushed Gold-Plated Brass (nickel-free)<br>
+                        <small>Art deco geometric design. Adjustable chain 16-20 inches with lobster clasp. Lightweight (45g). Comes in signature gift box.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-feather"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/embroidered-shawl.webp') }}"
+                         alt="Embroidered Shawl - Delicate floral embroidery on silk chiffon">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Embroidered Shawl</h4>
                     <p class="occasion-product-price">$115</p>
                     <p class="occasion-product-description">Delicate floral embroidery on silk chiffon</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 100% Silk Chiffon with Silk Thread embroidery<br>
+                        <small>Hand-embroidered floral motifs, rolled hem edges. 72 x 28 inches. Perfect for ceremonies. Dry clean only.</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -196,37 +241,52 @@
         <div class="occasion-product-grid">
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-vest"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/tailored-wool-blazer.webp') }}"
+                         alt="Tailored Wool Blazer - Italian wool with subtle herringbone pattern">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Tailored Wool Blazer</h4>
                     <p class="occasion-product-price">$295</p>
                     <p class="occasion-product-description">Italian wool with subtle herringbone pattern</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 100% Italian Merino Wool (Super 120s), Bemberg Silk lining<br>
+                        <small>Subtle herringbone weave, two-button closure with horn buttons, flap pockets. Available in charcoal and navy. Dry clean only.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-tshirt"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/silk-button-blouse.webp') }}"
+                         alt="Silk Button Blouse - Classic cut in ivory silk with mother-of-pearl buttons">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Silk Button Blouse</h4>
                     <p class="occasion-product-price">$165</p>
                     <p class="occasion-product-description">Classic cut in ivory silk with mother-of-pearl buttons</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> 100% Mulberry Silk Charmeuse (19 momme)<br>
+                        <small>Point collar, French seams, Mother-of-Pearl buttons. Relaxed fit with curved hem. Available in ivory, blush, black. Hand wash or dry clean.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="occasion-product-card">
                 <div class="occasion-product-image">
-                    <i class="fas fa-folder"></i>
+                    <img src="{{ url_for('static', filename='images/occasions/leather-portfolio.webp') }}"
+                         alt="Leather Portfolio - Full-grain leather with brass zipper closure">
                 </div>
                 <div class="occasion-product-info">
                     <h4>Leather Portfolio</h4>
                     <p class="occasion-product-price">$185</p>
                     <p class="occasion-product-description">Full-grain leather with brass zipper closure</p>
-                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-primary btn-sm" onclick="toggleDetails(this)">View Details</button>
+                    <div class="product-details-box" style="display: none;">
+                        <strong>Material:</strong> Full-Grain Vegetable-Tanned Cowhide Leather<br>
+                        <small>Solid brass YKK zipper. Interior document pocket, 3 pen loops, padded tablet sleeve (fits 11-inch). 13.5 x 10 x 1 inches. Ages beautifully.</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -249,6 +309,26 @@
 
 {% block scripts %}
 <script>
+    // Toggle product details box
+    function toggleDetails(button) {
+        const detailsBox = button.nextElementSibling;
+        if (detailsBox.style.display === 'none') {
+            // Close all other open boxes first
+            document.querySelectorAll('.product-details-box').forEach(box => {
+                box.style.display = 'none';
+            });
+            document.querySelectorAll('.btn-primary.btn-sm').forEach(btn => {
+                btn.textContent = 'View Details';
+            });
+            // Open this one
+            detailsBox.style.display = 'block';
+            button.textContent = 'Hide Details';
+        } else {
+            detailsBox.style.display = 'none';
+            button.textContent = 'View Details';
+        }
+    }
+
     // Theme Switcher functionality
     document.addEventListener('DOMContentLoaded', function() {
         const themeButtons = document.querySelectorAll('.theme-btn');

@@ -266,6 +266,7 @@ h4, h5, h6 {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
 .btn:hover::before {
@@ -465,6 +466,18 @@ h4, h5, h6 {
     background: linear-gradient(90deg, var(--parchment) 0%, var(--cream) 50%, var(--parchment) 100%);
 }
 
+/* Action Buttons in Tables - Ensure Clickability */
+.table .action-buttons {
+    position: relative;
+    z-index: 10;
+}
+
+.table .action-buttons .btn {
+    position: relative;
+    z-index: 11;
+    pointer-events: auto !important;
+}
+
 /* ============================================================
    Badges - Sage/Terracotta/Teal Variants
    ============================================================ */
@@ -551,6 +564,20 @@ textarea.form-control {
 /* ============================================================
    Modals - Double-Border Ornate Frames
    ============================================================ */
+
+/* Ensure Bootstrap modals appear correctly */
+.modal {
+    z-index: 1055 !important;
+}
+
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+.modal-dialog {
+    z-index: 1056 !important;
+}
+
 .modal-content {
     background: var(--cream);
     border: 3px solid var(--gold);
@@ -1147,6 +1174,71 @@ code {
     background: linear-gradient(135deg, rgba(0, 160, 176, 0.25) 0%, rgba(0, 160, 176, 0.1) 100%);
 }
 
+/* Dark Theme - About Page and General Text */
+[data-theme="dark"] .card p,
+[data-theme="dark"] .card-body p {
+    color: #e8dcc8;
+}
+
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h4,
+[data-theme="dark"] .card h5,
+[data-theme="dark"] .card h6,
+[data-theme="dark"] .card .text-teal {
+    color: #00b8c8;
+}
+
+[data-theme="dark"] .card .text-warm,
+[data-theme="dark"] .card small {
+    color: #c9b896;
+}
+
+[data-theme="dark"] .card strong {
+    color: #00b8c8;
+}
+
+[data-theme="dark"] .blockquote-ornate {
+    background: rgba(42, 42, 42, 0.5);
+    border-color: var(--gold);
+}
+
+[data-theme="dark"] .blockquote-ornate p {
+    color: #e8dcc8;
+}
+
+[data-theme="dark"] .blockquote-ornate footer {
+    color: #c9b896;
+}
+
+/* Dark Theme - Shop by Occasion Page */
+[data-theme="dark"] .occasion-card {
+    background: var(--cream);
+    border-color: var(--gold);
+}
+
+[data-theme="dark"] .occasion-section-header i {
+    color: var(--gold-light);
+}
+
+[data-theme="dark"] .occasion-product-card {
+    background: var(--cream);
+    border-color: var(--gold);
+}
+
+[data-theme="dark"] .occasion-product-image {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+}
+
+/* Fix price contrast in dark mode */
+[data-theme="dark"] .occasion-product-price {
+    color: var(--gold-light);
+}
+
+[data-theme="dark"] .occasion-product-card::before,
+[data-theme="dark"] .occasion-product-card::after {
+    opacity: 0.4;
+}
+
 /* ============================================================
    Minimal Theme
    ============================================================ */
@@ -1445,18 +1537,65 @@ code {
 }
 
 .occasion-product-image {
-    height: 180px;
+    height: 220px;
     background: linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid var(--gold);
+    overflow: hidden;
 }
 
 .occasion-product-image i {
     font-size: 4rem;
     color: var(--gold);
     opacity: 0.6;
+}
+
+.occasion-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.occasion-product-card:hover .occasion-product-image img {
+    transform: scale(1.05);
+}
+
+/* Product Details Box */
+.product-details-box {
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background: linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-soft);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.product-details-box strong {
+    color: var(--teal);
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.product-details-box small {
+    color: var(--warm-brown);
+}
+
+[data-theme="dark"] .product-details-box {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+    border-color: var(--gold);
+}
+
+[data-theme="dark"] .product-details-box strong {
+    color: #00b8c8;
+}
+
+[data-theme="dark"] .product-details-box small {
+    color: #c9b896;
 }
 
 .occasion-product-info {
@@ -1522,5 +1661,137 @@ code {
     .occasion-section-header {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+/* Product Modal Styles */
+.product-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 36, 22, 0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+}
+
+.product-modal-content {
+    background: var(--cream);
+    border-radius: var(--radius-soft);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--gold);
+    position: relative;
+}
+
+.product-modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    font-size: 2rem;
+    color: var(--warm-brown);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.product-modal-close:hover {
+    background: var(--parchment);
+    color: var(--teal);
+}
+
+.product-modal-image {
+    background: linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.product-modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 400px;
+}
+
+.product-modal-info {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-modal-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--teal);
+    margin-bottom: var(--space-sm);
+}
+
+.product-modal-price {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+}
+
+.product-modal-description {
+    color: var(--warm-brown);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+}
+
+/* Dark theme modal styles */
+[data-theme="dark"] .product-modal-content {
+    background: var(--cream);
+}
+
+[data-theme="dark"] .product-modal-image {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+}
+
+[data-theme="dark"] .product-modal-price {
+    color: var(--gold-light);
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+    .product-modal-content {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
+    }
+
+    .product-modal-image {
+        min-height: 200px;
+    }
+
+    .product-modal-image img {
+        max-height: 250px;
+    }
+
+    .product-modal-info {
+        padding: var(--space-lg);
+    }
+
+    .product-modal-info h3 {
+        font-size: 1.4rem;
     }
 }

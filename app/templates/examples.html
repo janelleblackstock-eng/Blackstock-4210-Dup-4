@@ -81,7 +81,7 @@
                                 <span class="badge bg-secondary">Inactive</span>
                                 {% endif %}
                             </td>
-                            <td>
+                            <td class="action-buttons">
                                 <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal{{ product.id }}">
                                     <i class="fas fa-edit"></i>
                                 </button>
@@ -90,91 +90,6 @@
                                 </button>
                             </td>
                         </tr>
-
-                        <!-- Edit Product Modal -->
-                        <div class="modal fade" id="editProductModal{{ product.id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">
-                                            <i class="fas fa-edit me-2 text-gold"></i>Edit Product
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form method="post" action="{{ url_for('examples.update_product', product_id=product.id) }}">
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" name="name" value="{{ product.name }}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Description</label>
-                                                <textarea class="form-control" name="description">{{ product.description }}</textarea>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">Price</label>
-                                                    <input type="number" step="0.01" class="form-control" name="price" value="{{ product.price }}" min="0" required>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">SKU</label>
-                                                    <input type="text" class="form-control" name="sku" value="{{ product.sku }}">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">Quantity</label>
-                                                    <input type="number" class="form-control" name="quantity" value="{{ product.quantity }}" min="0">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">Collection</label>
-                                                    <select class="form-select" name="collection_id">
-                                                        <option value="">-- None --</option>
-                                                        {% for collection in all_collections %}
-                                                        <option value="{{ collection.id }}" {% if product.collection_id == collection.id %}selected{% endif %}>
-                                                            {{ collection.name }}
-                                                        </option>
-                                                        {% endfor %}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-warning">
-                                                <i class="fas fa-save me-1"></i>Save Changes
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Delete Product Modal -->
-                        <div class="modal fade" id="deleteProductModal{{ product.id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">
-                                            <i class="fas fa-exclamation-triangle me-2" style="color: #8B3A3A;"></i>Delete Product
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Are you sure you want to delete <strong class="text-teal">{{ product.name }}</strong>?</p>
-                                        <p class="small text-warm">This action cannot be undone.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form method="post" action="{{ url_for('examples.delete_product', product_id=product.id) }}">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="fas fa-trash me-1"></i>Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -210,7 +125,7 @@
                             <td><strong>{{ collection.name }}</strong></td>
                             <td>{{ collection.description[:50] }}{% if collection.description|length > 50 %}...{% endif %}</td>
                             <td><small>{{ collection.created_at }}</small></td>
-                            <td>
+                            <td class="action-buttons">
                                 <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editCollectionModal{{ collection.id }}">
                                     <i class="fas fa-edit"></i>
                                 </button>
@@ -219,64 +134,6 @@
                                 </button>
                             </td>
                         </tr>
-
-                        <!-- Edit Collection Modal -->
-                        <div class="modal fade" id="editCollectionModal{{ collection.id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">
-                                            <i class="fas fa-edit me-2 text-gold"></i>Edit Collection
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form method="post" action="{{ url_for('examples.update_collection', collection_id=collection.id) }}">
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" name="name" value="{{ collection.name }}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Description</label>
-                                                <textarea class="form-control" name="description" rows="3">{{ collection.description }}</textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-warning">
-                                                <i class="fas fa-save me-1"></i>Save Changes
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Delete Collection Modal -->
-                        <div class="modal fade" id="deleteCollectionModal{{ collection.id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">
-                                            <i class="fas fa-exclamation-triangle me-2" style="color: #8B3A3A;"></i>Delete Collection
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Are you sure you want to delete <strong class="text-teal">{{ collection.name }}</strong>?</p>
-                                        <p class="small text-warm">This action cannot be undone.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form method="post" action="{{ url_for('examples.delete_collection', collection_id=collection.id) }}">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="fas fa-trash me-1"></i>Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -328,7 +185,7 @@
                                 {% endif %}
                             </td>
                             <td><small>{{ order.created_at }}</small></td>
-                            <td>
+                            <td class="action-buttons">
                                 <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editOrderModal{{ order.id }}">
                                     <i class="fas fa-edit"></i>
                                 </button>
@@ -337,90 +194,6 @@
                                 </button>
                             </td>
                         </tr>
-
-                        <!-- Edit Order Modal -->
-                        <div class="modal fade" id="editOrderModal{{ order.id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">
-                                            <i class="fas fa-edit me-2 text-gold"></i>Edit Order #{{ order.id }}
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form method="post" action="{{ url_for('examples.update_order', order_id=order.id) }}">
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label class="form-label">Customer Name</label>
-                                                <input type="text" class="form-control" name="customer_name" value="{{ order.customer_name }}" required>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">Email</label>
-                                                    <input type="email" class="form-control" name="customer_email" value="{{ order.customer_email }}">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">Phone</label>
-                                                    <input type="text" class="form-control" name="customer_phone" value="{{ order.customer_phone }}">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Shipping Address</label>
-                                                <textarea class="form-control" name="shipping_address" rows="2">{{ order.shipping_address }}</textarea>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">Order Total</label>
-                                                    <input type="number" step="0.01" class="form-control" name="order_total" value="{{ order.order_total }}" min="0" required>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label">Status</label>
-                                                    <select class="form-select" name="status">
-                                                        <option value="pending" {% if order.status == 'pending' %}selected{% endif %}>Pending</option>
-                                                        <option value="processing" {% if order.status == 'processing' %}selected{% endif %}>Processing</option>
-                                                        <option value="shipped" {% if order.status == 'shipped' %}selected{% endif %}>Shipped</option>
-                                                        <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>Delivered</option>
-                                                        <option value="cancelled" {% if order.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-warning">
-                                                <i class="fas fa-save me-1"></i>Save Changes
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Delete Order Modal -->
-                        <div class="modal fade" id="deleteOrderModal{{ order.id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">
-                                            <i class="fas fa-exclamation-triangle me-2" style="color: #8B3A3A;"></i>Delete Order
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Are you sure you want to delete order <strong class="text-teal">#{{ order.id }}</strong> for {{ order.customer_name }}?</p>
-                                        <p class="small text-warm">This action cannot be undone.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form method="post" action="{{ url_for('examples.delete_order', order_id=order.id) }}">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="fas fa-trash me-1"></i>Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -428,6 +201,10 @@
         </div>
     </div>
 </div>
+
+<!-- ============================================================
+     ALL MODALS - Outside tab-content to avoid z-index stacking issues
+     ============================================================ -->
 
 <!-- Add Product Modal -->
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
@@ -474,6 +251,10 @@
                             </select>
                         </div>
                     </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" name="is_active" id="addIsActive" value="1" checked>
+                        <label class="form-check-label" for="addIsActive">Active</label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -485,6 +266,96 @@
         </div>
     </div>
 </div>
+
+<!-- Edit/Delete Product Modals -->
+{% for product in all_products %}
+<div class="modal fade" id="editProductModal{{ product.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-edit me-2 text-gold"></i>Edit Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="{{ url_for('examples.update_product', product_id=product.id) }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ product.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description">{{ product.description }}</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Price</label>
+                            <input type="number" step="0.01" class="form-control" name="price" value="{{ product.price }}" min="0" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">SKU</label>
+                            <input type="text" class="form-control" name="sku" value="{{ product.sku }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Quantity</label>
+                            <input type="number" class="form-control" name="quantity" value="{{ product.quantity }}" min="0">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Collection</label>
+                            <select class="form-select" name="collection_id">
+                                <option value="">-- None --</option>
+                                {% for collection in all_collections %}
+                                <option value="{{ collection.id }}" {% if product.collection_id == collection.id %}selected{% endif %}>
+                                    {{ collection.name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" name="is_active" id="editIsActive{{ product.id }}" value="1" {% if product.is_active %}checked{% endif %}>
+                        <label class="form-check-label" for="editIsActive{{ product.id }}">Active</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-save me-1"></i>Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteProductModal{{ product.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle me-2" style="color: #8B3A3A;"></i>Delete Product
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong class="text-teal">{{ product.name }}</strong>?</p>
+                <p class="small text-warm">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" action="{{ url_for('examples.delete_product', product_id=product.id) }}" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash me-1"></i>Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 <!-- Add Collection Modal -->
 <div class="modal fade" id="addCollectionModal" tabindex="-1" aria-hidden="true">
@@ -517,6 +388,69 @@
         </div>
     </div>
 </div>
+
+<!-- Edit/Delete Collection Modals -->
+{% for collection in all_collections %}
+<div class="modal fade" id="editCollectionModal{{ collection.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-edit me-2 text-gold"></i>Edit Collection
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="{{ url_for('examples.update_collection', collection_id=collection.id) }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ collection.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="3">{{ collection.description }}</textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-save me-1"></i>Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteCollectionModal{{ collection.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle me-2" style="color: #8B3A3A;"></i>Delete Collection
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    <strong>Warning:</strong> Deleting this collection will also delete all products assigned to it.
+                </div>
+                <p>Are you sure you want to delete <strong class="text-teal">{{ collection.name }}</strong>?</p>
+                <p class="small text-warm">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" action="{{ url_for('examples.delete_collection', collection_id=collection.id) }}" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash me-1"></i>Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 <!-- Add Order Modal -->
 <div class="modal fade" id="addOrderModal" tabindex="-1" aria-hidden="true">
@@ -575,4 +509,90 @@
         </div>
     </div>
 </div>
+
+<!-- Edit/Delete Order Modals -->
+{% for order in all_orders %}
+<div class="modal fade" id="editOrderModal{{ order.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-edit me-2 text-gold"></i>Edit Order #{{ order.id }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="{{ url_for('examples.update_order', order_id=order.id) }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" name="customer_name" value="{{ order.customer_name }}" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="customer_email" value="{{ order.customer_email }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="text" class="form-control" name="customer_phone" value="{{ order.customer_phone }}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Shipping Address</label>
+                        <textarea class="form-control" name="shipping_address" rows="2">{{ order.shipping_address }}</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Order Total</label>
+                            <input type="number" step="0.01" class="form-control" name="order_total" value="{{ order.order_total }}" min="0" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" name="status">
+                                <option value="pending" {% if order.status == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="processing" {% if order.status == 'processing' %}selected{% endif %}>Processing</option>
+                                <option value="shipped" {% if order.status == 'shipped' %}selected{% endif %}>Shipped</option>
+                                <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>Delivered</option>
+                                <option value="cancelled" {% if order.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-save me-1"></i>Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteOrderModal{{ order.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle me-2" style="color: #8B3A3A;"></i>Delete Order
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete order <strong class="text-teal">#{{ order.id }}</strong> for {{ order.customer_name }}?</p>
+                <p class="small text-warm">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" action="{{ url_for('examples.delete_order', order_id=order.id) }}" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash me-1"></i>Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
 {% endblock %}
